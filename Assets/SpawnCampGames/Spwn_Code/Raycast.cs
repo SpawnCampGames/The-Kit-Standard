@@ -44,18 +44,18 @@ namespace SPWN
             else
             {
                 targetDir = local ? (
-                            direction == Direction.north ? targetObj.transform.forward :
-                            direction == Direction.west ? -targetObj.transform.right :
-                            direction == Direction.south ? -targetObj.transform.forward :
-                            direction == Direction.east ? targetObj.transform.right :
-                            direction == Direction.up ? targetObj.transform.up :
+                            direction == Direction.North ? targetObj.transform.forward :
+                            direction == Direction.West ? -targetObj.transform.right :
+                            direction == Direction.South ? -targetObj.transform.forward :
+                            direction == Direction.East ? targetObj.transform.right :
+                            direction == Direction.Up ? targetObj.transform.up :
                             -targetObj.transform.up
                         ) : (
-                            direction == Direction.north ? Vector3.forward :
-                            direction == Direction.west ? -Vector3.right :
-                            direction == Direction.south ? -Vector3.forward :
-                            direction == Direction.east ? Vector3.right :
-                            direction == Direction.up ? Vector3.up :
+                            direction == Direction.North ? Vector3.forward :
+                            direction == Direction.West ? -Vector3.right :
+                            direction == Direction.South ? -Vector3.forward :
+                            direction == Direction.East ? Vector3.right :
+                            direction == Direction.Up ? Vector3.up :
                             -Vector3.up
                         );
             }

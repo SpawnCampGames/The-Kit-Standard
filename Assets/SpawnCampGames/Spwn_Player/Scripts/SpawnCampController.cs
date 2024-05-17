@@ -46,7 +46,7 @@ public class SpawnCampController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    public SPWN.HeadBobber headbob;
+    public SPWN.CamRebounder headbob;
 
     #endregion
 

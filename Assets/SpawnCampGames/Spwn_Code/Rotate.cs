@@ -31,9 +31,9 @@ namespace SPWN
             {
                 switch(axis)
                 {
-                    case Axis.x: return targetObj.transform.right;
-                    case Axis.y: return targetObj.transform.up;
-                    case Axis.z: return targetObj.transform.forward;
+                    case Axis.X: return targetObj.transform.right;
+                    case Axis.Y: return targetObj.transform.up;
+                    case Axis.Z: return targetObj.transform.forward;
                     default: return Vector3.zero;
                 }
             }
@@ -41,9 +41,9 @@ namespace SPWN
             {
                 switch(axis)
                 {
-                    case Axis.x: return Vector3.right;
-                    case Axis.y: return Vector3.up;
-                    case Axis.z: return Vector3.forward;
+                    case Axis.X: return Vector3.right;
+                    case Axis.Y: return Vector3.up;
+                    case Axis.Z: return Vector3.forward;
                     default: return Vector3.zero;
                 }
             }

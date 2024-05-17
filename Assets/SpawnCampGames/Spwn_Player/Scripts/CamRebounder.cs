@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace SPWN
 {
-    public class HeadBobber : MonoBehaviour
+    public class CamRebounder : MonoBehaviour
     {
         SpawnCampController spwnCont;
         public float length = 1f;

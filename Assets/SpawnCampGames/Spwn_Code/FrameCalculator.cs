@@ -5,87 +5,80 @@ using System.Collections.Generic;
 
 public class FrameCalculator : MonoBehaviour
 {
-    // TEXT VARIABLES
-    [SerializeField] private TMP_Text timeText;
-    [SerializeField] private TMP_Text frameRateText;
-    [SerializeField] private TMP_Text avgFrameRateText;
-    [SerializeField] private TMP_Text lowestFrameRateText;
+    [SerializeField] TMP_Text timeText;
+    [SerializeField] TMP_Text frameRateText;
+    [SerializeField] TMP_Text avgFrameRateText;
+    [SerializeField] TMP_Text lowestFrameRateText;
 
-    private float fps = 0.0f;
-    private float lowestFrameRate = float.MaxValue;
-    private float averageFrameRate = 0.0f;
+    float fps = 0.0f;
+    float lowestFrameRate = float.MaxValue;
+    float averageFrameRate = 0.0f;
 
-    private float averageDuration = 5.0f; // AVERAGE FRAMERATE LAP TIME
-    private bool averageCalculated = false;
+    float averageDuration = 5.0f; // Average framerate lap time
+    bool averageCalculated = false;
 
-    private Queue<float> frameCounts = new Queue<float>();
-    private float totalTime = 0.0f;
+    Queue<float> frameCounts = new Queue<float>();
+    float totalTime = 0.0f;
 
-    // PING PONG VARIABLES
-    [SerializeField] private Image pingPongBlip;
+    [SerializeField] Image pingPongBlip;
     public float pingPongSpeed = 100f;
     public float pingPongMin = 0f;
     public float pingPongMax = 550f;
 
-    private float pingPongPosition;
-    private Vector2 pingPongStartingPosition;
-    private Vector2 pingPongEndingPosition;
+    float pingPongPosition;
+    Vector2 pingPongStartingPosition;
+    Vector2 pingPongEndingPosition;
 
     void Start()
     {
-        // Get starting and ending positions
+        // get starting and ending positions for ping pong animation
         pingPongStartingPosition = pingPongBlip.rectTransform.anchoredPosition;
         pingPongEndingPosition = pingPongStartingPosition + Vector2.right * (pingPongMax - pingPongMin);
     }
 
     void Update()
     {
-        // Calculate ping-pong position using Mathf.PingPong function
+        // calculate ping-pong position
         pingPongPosition = Mathf.PingPong(Time.time * pingPongSpeed,pingPongMax - pingPongMin) + pingPongMin;
-
-        // Update anchored position of the pingPongBlip
         pingPongBlip.rectTransform.anchoredPosition = Vector2.Lerp(pingPongStartingPosition,pingPongEndingPosition,pingPongPosition / (pingPongMax - pingPongMin));
 
-        // CALCULATE ONLY IF TIME PASSING
+        // calculate framerate only if time is passing
         float dt = Time.deltaTime;
         if(dt > 0.0f)
         {
             totalTime += dt;
             fps = 1.0f / dt;
 
-            // REALTIME FRAMERATE (RT)
-            frameRateText.text = "REAL: " + fps.ToString("F0");
+            frameRateText.text = "REAL : " + fps.ToString("F0").PadLeft(7,'0');
 
-            // AVERAGE FRAMERATE (ROLLING)
-            frameCounts.Enqueue(fps); // ADD CURRENT
+            // rolling average framerate
+            frameCounts.Enqueue(fps);
             if(totalTime >= averageDuration)
             {
-                // REMOVE OLD
                 while(totalTime - frameCounts.Peek() >= averageDuration)
                 {
                     frameCounts.Dequeue();
                 }
 
-                // CALCULATE
                 float sum = 0.0f;
                 foreach(float frameCount in frameCounts)
                 {
                     sum += frameCount;
                 }
                 averageFrameRate = sum / frameCounts.Count;
-                avgFrameRateText.text = "ROLL: " + averageFrameRate.ToString("F0");
+                avgFrameRateText.text = "ROLL : " + averageFrameRate.ToString("F0").PadLeft(7,'0');
                 averageCalculated = true;
             }
 
-            // UPDATE LOWEST FRAME RATE AFTER AVERAGE IS CALCULATED
+            // update lowest framerate after average is calculated
             if(averageCalculated && fps < lowestFrameRate)
             {
                 lowestFrameRate = fps;
-                lowestFrameRateText.text = "LOW: " + lowestFrameRate.ToString("F0");
+                lowestFrameRateText.text = "LOW : " + lowestFrameRate.ToString("F0").PadLeft(7,'0');
             }
         }
 
-        // DISPLAY TIME
-        timeText.text = "TIME: " + Time.time.ToString("F4");
+        // display time
+        timeText.text = "TIME : " + Time.time.ToString("F4").PadLeft(7,'0');
     }
 }
