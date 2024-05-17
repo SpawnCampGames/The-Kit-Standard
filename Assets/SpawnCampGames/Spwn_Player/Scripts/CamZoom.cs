@@ -2,6 +2,7 @@
 
 namespace SPWN
 {
+    [RequireComponent(typeof(Camera))]
     public class CamZoom : MonoBehaviour
     {
         Camera playerCam;
@@ -10,24 +11,25 @@ namespace SPWN
         private float desiredFOV;
         public float zoomSpeed = 10f;
 
+        float minFOV = 50f;
+        public float maxFOV = 60f;
+
         void Start()
         {
             playerCam = GetComponent<Camera>();
-            // move = FindObjectOfType<SpawnCampController>(); // deprecated
-            move = FindFirstObjectByType<SpawnCampController>();
+            move = FindAnyObjectByType<SpawnCampController>();
         }
 
         void Update()
         {
-
             if(Input.GetButton("Fire2"))
             {
-                desiredFOV = 55f;
+                desiredFOV = minFOV;
             }
 
             else
             {
-                desiredFOV = 60f;
+                desiredFOV = maxFOV;
             }
 
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,desiredFOV,zoomSpeed * Time.deltaTime);

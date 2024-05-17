@@ -10,31 +10,31 @@ public class SpawnCampController : MonoBehaviour
     [SerializeField] private float gravitySim;
     [SerializeField] private float jumpCounter;
     [SerializeField] private float initialSpeed;
-    [SerializeField] private float modifiedSpeed;
+    public float modifiedSpeed;
     [SerializeField] private float playersActualSpeed;
     [SerializeField] private float runningJumpModifier;
 
     [Header("Player Dynamic Vectors")]
     [SerializeField] private Vector3 groundVector;
     [SerializeField] private Vector3 airVector;
-    [SerializeField] private Vector3 finalVector;
+    public Vector3 finalVector;
     [SerializeField] private Vector3 jump;
     [SerializeField] private Vector3 dash;
     [SerializeField] private Vector3 previousPlayerPosition;
 
     [Header("Player Dynamic Bools")]
     [SerializeField] private bool isAiming;
-    public bool isCrouching;
-    public bool isRunning;
+    [SerializeField] private bool isCrouching;
+    [SerializeField] private bool isRunning;
     [SerializeField] private bool isSliding;
     [SerializeField] private bool isDashing;
     [SerializeField] private bool obstacleOverhead;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool wasGrounded;
     [SerializeField] private bool isClimbing;
 
     [Header("Variables Assigned Via Script")]
     private AudioSource audioSource;
-    private CharacterController characterController;
+    public CharacterController characterController;
 
     [Header("Variables Assigned Via Editor")]
     [SerializeField] private ControllerSettings playerSettings;
@@ -45,6 +45,8 @@ public class SpawnCampController : MonoBehaviour
 
     private float horizontalInput;
     private float verticalInput;
+
+    public SPWN.HeadBobber headbob;
 
     #endregion
 
@@ -61,7 +63,7 @@ public class SpawnCampController : MonoBehaviour
 
     void Update()
     {
-        isGrounded = characterController.isGrounded;
+        wasGrounded = characterController.isGrounded; 
 
         if(!isClimbing)
         {
@@ -75,7 +77,33 @@ public class SpawnCampController : MonoBehaviour
         {
             JumpAndClimbCheck();
         }
+
         GetPlayersSpeed();
+
+        if(!wasGrounded && characterController.isGrounded)
+        {
+            headbob.CamRebound();
+            Debug.Log("Land");
+        }
+    }
+    public Vector3 FinalVector()
+    {
+        return finalVector;
+    }
+
+    public bool Grounded()
+    {
+        return characterController.isGrounded;
+    }
+
+    public bool Running()
+    {
+        return isRunning;
+    }
+
+    public bool Sliding()
+    {
+        return isSliding;
     }
 
     private void Move()
@@ -110,7 +138,7 @@ public class SpawnCampController : MonoBehaviour
 
             if(isCrouching && isRunning)
             {
-                //  isSliding = true;
+                isSliding = true;
                 groundVector.x = Mathf.Lerp(groundVector.x,0,playerSettings.slideSlowSpeed * Time.deltaTime);
                 groundVector.z = Mathf.Lerp(groundVector.z,0,playerSettings.slideSlowSpeed * Time.deltaTime);
 
@@ -119,7 +147,7 @@ public class SpawnCampController : MonoBehaviour
             }
             else
             {
-                // isSliding = false;
+                isSliding = false;
                 if(horizontalInput != 0 || verticalInput != 0)
                 {
                     groundVector = new Vector3(horizontalInput,0,verticalInput);
@@ -135,6 +163,8 @@ public class SpawnCampController : MonoBehaviour
             Vector3 airControlVector = new Vector3(horizontalInput,0,verticalInput);
             airControlVector.Normalize();
             airControlVector = transform.TransformDirection(airControlVector);
+
+            //im getting this kind of stuff while its still being created i think
             airVector = Vector3.Lerp(airVector,airVector + airControlVector,playerSettings.airControlStrength * Time.deltaTime);
             groundVector = Vector3.Lerp(groundVector,Vector3.zero,playerSettings.momentumDampingSpeed * Time.deltaTime);
         }

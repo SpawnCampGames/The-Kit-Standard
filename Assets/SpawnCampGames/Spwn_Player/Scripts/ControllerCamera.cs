@@ -6,7 +6,7 @@ namespace SPWN
     {
         public GameObject controller;
         [SerializeField] private float lookSensitivity = 1.5f;
-        [SerializeField] public float speed;
+        [SerializeField] private float verticalLookLimit = 80f; // Adjust this value to set the limit for looking up and down
         [SerializeField] private float smoothing = 1.5f;
         [SerializeField] private Vector2 smoothedVelocity;
         [SerializeField] private Vector2 currentLookingPos;
@@ -28,6 +28,7 @@ namespace SPWN
             playersYRotation = controller.transform.eulerAngles.y;
             RotateCamera();
         }
+
         private void RotateCamera()
         {
             // get our input
@@ -39,10 +40,13 @@ namespace SPWN
 
             currentLookingPos += smoothedVelocity;
 
-            // rotate the camera on it's X axis (up and down)
+            // Clamp the vertical rotation to limit the angle
+            currentLookingPos.y = Mathf.Clamp(currentLookingPos.y,-verticalLookLimit,verticalLookLimit);
+
+            // rotate the camera on its X axis (up and down)
             transform.localRotation = Quaternion.AngleAxis(-currentLookingPos.y,Vector3.right);
 
-            // rotate the player on it's Y axis (left and right)
+            // rotate the player on its Y axis (left and right)
             controller.transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x,controller.transform.up);
         }
 
