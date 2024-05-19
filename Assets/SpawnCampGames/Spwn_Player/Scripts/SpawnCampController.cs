@@ -85,22 +85,9 @@ public class SpawnCampController : MonoBehaviour
         }
     }
     public Vector3 FinalVector() => finalVector;
-
-
-    public bool Grounded()
-    {
-        return characterController.isGrounded;
-    }
-
-    public bool Running()
-    {
-        return isRunning;
-    }
-
-    public bool Sliding()
-    {
-        return isSliding;
-    }
+    public bool Grounded() => characterController.isGrounded;
+    public bool Running() => isRunning;
+    public bool Sliding() => isSliding;
 
     private void Move()
     {

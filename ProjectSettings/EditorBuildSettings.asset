@@ -6,6 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SpawnCampGames/Sandbox.unity
+    path: Assets/SpawnCampGames/Sandbox/Scenes/Sandbox.unity
     guid: 860a8828336b36e498104fda29b8605a
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
