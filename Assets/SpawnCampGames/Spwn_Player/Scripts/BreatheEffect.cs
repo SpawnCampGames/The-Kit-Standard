@@ -7,7 +7,6 @@ namespace SPWN
 
         public float amplitude = 0.01f;
         public float period = 0.3f;
-
         public float minAmplitude = 0.0075f;
         public float minPeriod = 0.3f;
 
