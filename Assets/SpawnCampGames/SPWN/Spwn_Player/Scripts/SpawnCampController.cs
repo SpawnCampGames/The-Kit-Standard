@@ -269,7 +269,5 @@ public class SpawnCampController : MonoBehaviour
                 Debug.DrawRay(transform.position, -transform.up * (characterController.height/2 + 0.2f), gizmoColor, .1f);
             }
         }
-
-
     }
 }

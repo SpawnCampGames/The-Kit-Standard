@@ -43,21 +43,14 @@ namespace SPWN
             }
             else
             {
-                targetDir = local ? (
-                            direction == Direction.North ? targetObj.transform.forward :
-                            direction == Direction.West ? -targetObj.transform.right :
-                            direction == Direction.South ? -targetObj.transform.forward :
-                            direction == Direction.East ? targetObj.transform.right :
-                            direction == Direction.Up ? targetObj.transform.up :
-                            -targetObj.transform.up
-                        ) : (
-                            direction == Direction.North ? Vector3.forward :
-                            direction == Direction.West ? -Vector3.right :
-                            direction == Direction.South ? -Vector3.forward :
-                            direction == Direction.East ? Vector3.right :
-                            direction == Direction.Up ? Vector3.up :
-                            -Vector3.up
-                        );
+                if(local)
+                {
+                    targetDir = Utils.GetDirection(direction, this.transform);
+                }
+                else
+                {
+                    targetDir = Utils.GetDirection(direction);
+                }
             }
         }
 
