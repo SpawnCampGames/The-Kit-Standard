@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using SPWN;
@@ -39,7 +37,7 @@ public class Switch : MonoBehaviour, IInteractable
 
     public void Update()
     {
-        if(hasActivated && switchType == SwitchType.Repeatitive)
+        if(hasActivated && switchType == SwitchType.Repetitive)
         {
             switchTime += Time.deltaTime;
 
@@ -63,7 +61,7 @@ public class Switch : MonoBehaviour, IInteractable
                 }
                 break;
 
-                case SwitchType.Repeatitive:
+                case SwitchType.Repetitive:
                 //check if timer is reset
                 if(!hasActivated)
                 {

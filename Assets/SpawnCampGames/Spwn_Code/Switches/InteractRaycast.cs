@@ -29,7 +29,7 @@ public class InteractRaycast : MonoBehaviour
     void Update()
     {
         ray = new Ray(cam.transform.position,cam.transform.forward);
-        if(Physics.Raycast(ray,out RaycastHit hit,distance,mask))
+        if(Physics.Raycast(ray, out RaycastHit hit,distance, mask))
         {
             if(hit.collider.transform.TryGetComponent(out IInteractable interactable))
             {

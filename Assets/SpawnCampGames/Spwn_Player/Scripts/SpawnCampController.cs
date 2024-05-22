@@ -26,7 +26,7 @@ public class SpawnCampController : MonoBehaviour
     [SerializeField] private bool isSliding;
     [SerializeField] private bool obstacleOverhead;
     [SerializeField] private bool wasGrounded;
-    
+
     [Header("Variables Assigned Via Script")]
     private AudioSource audioSource;
     public CharacterController characterController;
@@ -79,7 +79,7 @@ public class SpawnCampController : MonoBehaviour
         GetPlayersSpeed();
 
         // custom ground check for *landing*
-        if(!wasGrounded && characterController.isGrounded)
+        if (!wasGrounded && characterController.isGrounded)
         {
             headbob.CamRebound();
         }
@@ -99,13 +99,13 @@ public class SpawnCampController : MonoBehaviour
             (airVector * playerSettings.airSpeed) +
             (Vector3.up * gravitySim);
 
-        if(jump.magnitude > playerSettings.jumpMagn)
+        if (jump.magnitude > playerSettings.jumpMagn)
         {
             finalVector += jump;
         }
 
         characterController.Move(finalVector * Time.deltaTime);
-        jump = Vector3.Lerp(jump,Vector3.zero,playerSettings.jumpSmoothing * Time.deltaTime);
+        jump = Vector3.Lerp(jump, Vector3.zero, playerSettings.jumpSmoothing * Time.deltaTime);
     }
 
     private void ProcessPlayerInput()
@@ -113,47 +113,47 @@ public class SpawnCampController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             airVector = Vector3.zero;
 
-            if(isCrouching && isRunning)
+            if (isCrouching && isRunning)
             {
                 isSliding = true;
-                groundVector.x = Mathf.Lerp(groundVector.x,0,playerSettings.slideSlowSpeed * Time.deltaTime);
-                groundVector.z = Mathf.Lerp(groundVector.z,0,playerSettings.slideSlowSpeed * Time.deltaTime);
+                groundVector.x = Mathf.Lerp(groundVector.x, 0, playerSettings.slideSlowSpeed * Time.deltaTime);
+                groundVector.z = Mathf.Lerp(groundVector.z, 0, playerSettings.slideSlowSpeed * Time.deltaTime);
 
-                if(Mathf.Abs(groundVector.x) < .175f && Mathf.Abs(groundVector.z) < .175f)
+                if (Mathf.Abs(groundVector.x) < .175f && Mathf.Abs(groundVector.z) < .175f)
                     isRunning = false;
             }
             else
             {
                 isSliding = false;
-                if(horizontalInput != 0 || verticalInput != 0)
+                if (horizontalInput != 0 || verticalInput != 0)
                 {
-                    groundVector = new Vector3(horizontalInput,0,verticalInput);
+                    groundVector = new Vector3(horizontalInput, 0, verticalInput);
                     groundVector.Normalize();
                     groundVector = transform.TransformDirection(groundVector);
                 }
                 else
-                    groundVector = Vector3.Lerp(groundVector,Vector3.zero,playerSettings.groundMomentumDampingSpeed * Time.deltaTime);
+                    groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.groundMomentumDampingSpeed * Time.deltaTime);
             }
         }
         else
         {
-            Vector3 airControlVector = new Vector3(horizontalInput,0,verticalInput);
+            Vector3 airControlVector = new Vector3(horizontalInput, 0, verticalInput);
             airControlVector.Normalize();
             airControlVector = transform.TransformDirection(airControlVector);
 
             //im getting this kind of stuff while its still being created i think
-            airVector = Vector3.Lerp(airVector,airVector + airControlVector,playerSettings.airControlStrength * Time.deltaTime);
-            groundVector = Vector3.Lerp(groundVector,Vector3.zero,playerSettings.momentumDampingSpeed * Time.deltaTime);
+            airVector = Vector3.Lerp(airVector, airVector + airControlVector, playerSettings.airControlStrength * Time.deltaTime);
+            groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.momentumDampingSpeed * Time.deltaTime);
         }
     }
 
     private void ApplyGravity()
     {
-        if(characterController.isGrounded && gravitySim < playerSettings.gravity)
+        if (characterController.isGrounded && gravitySim < playerSettings.gravity)
             gravitySim = playerSettings.gravity;
 
         gravitySim += playerSettings.gravity * Time.deltaTime;
@@ -161,12 +161,12 @@ public class SpawnCampController : MonoBehaviour
 
     private void JumpCheck()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isCrouching && jumpCounter > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !isCrouching && jumpCounter > 0)
         {
             ResetVerticalVelocity();
 
             var calculatedJumpModifier = 1f;
-            if(isRunning)
+            if (isRunning)
                 calculatedJumpModifier = runningJumpModifier;
 
 
@@ -178,28 +178,28 @@ public class SpawnCampController : MonoBehaviour
 
     private void CrouchCheck()
     {
-        if(Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             isCrouching = true;
             // Height and Center deltaMaxs need to match
-            characterController.height = Mathf.MoveTowards(characterController.height,1f,(7f * Time.deltaTime));
-            characterController.center = Vector3.MoveTowards(characterController.center,playerSettings.crouchingVector,(7f * Time.deltaTime));
+            characterController.height = Mathf.MoveTowards(characterController.height, 1f, (7f * Time.deltaTime));
+            characterController.center = Vector3.MoveTowards(characterController.center, playerSettings.crouchingVector, (7f * Time.deltaTime));
         }
-        else if(!obstacleOverhead)
+        else if (!obstacleOverhead)
         {
             isCrouching = false;
             // Height and Center deltaMaxs need to match
-            characterController.height = Mathf.MoveTowards(characterController.height,2f,(5f * Time.deltaTime));
-            characterController.center = Vector3.MoveTowards(characterController.center,playerSettings.standingVector,(5f * Time.deltaTime));
+            characterController.height = Mathf.MoveTowards(characterController.height, 2f, (5f * Time.deltaTime));
+            characterController.center = Vector3.MoveTowards(characterController.center, playerSettings.standingVector, (5f * Time.deltaTime));
         }
     }
 
     private void CeilingCheck()
     {
-        if(isCrouching)
+        if (isCrouching)
         {
             RaycastHit hit;
-            if(Physics.SphereCast(transform.position + playerSettings.ceilingChkRaycastOffset,1f,transform.up,out hit,playerSettings.ceilingChkRaycastDist))
+            if (Physics.SphereCast(transform.position + playerSettings.ceilingChkRaycastOffset, 1f, transform.up, out hit, playerSettings.ceilingChkRaycastDist))
                 obstacleOverhead = true;
             else
                 obstacleOverhead = false;
@@ -210,7 +210,7 @@ public class SpawnCampController : MonoBehaviour
 
     private void GroundCheck()
     {
-        if(characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             jumpCounter = playerSettings.allowedJumps;
         }
@@ -226,23 +226,23 @@ public class SpawnCampController : MonoBehaviour
     {
         isAiming = Input.GetMouseButton(1);
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !isRunning)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isRunning)
             isRunning = !isRunning;
 
         float desiredSpeed = playerSettings.walkSpeed;
 
-        if(isRunning)
+        if (isRunning)
         {
-            if((finalVector.x == 0f && finalVector.z == 0f) || (Input.GetKeyUp(KeyCode.W) && !isCrouching))
+            if ((finalVector.x == 0f && finalVector.z == 0f) || (Input.GetKeyUp(KeyCode.W) && !isCrouching))
                 isRunning = !isRunning;
 
             desiredSpeed = playerSettings.runSpeed;
         }
 
-        if(isCrouching)
+        if (isCrouching)
             desiredSpeed = playerSettings.crouchSpeed;
 
-        if(isRunning && !isAiming)
+        if (isRunning && !isAiming)
             desiredSpeed = playerSettings.runSpeed;
 
         finalSpeed = desiredSpeed;
@@ -251,7 +251,25 @@ public class SpawnCampController : MonoBehaviour
     //speedometer
     void GetPlayersSpeed()
     {
-        playersActualSpeed = Vector3.Distance(previousPlayerPosition,transform.position) / Time.deltaTime;
+        playersActualSpeed = Vector3.Distance(previousPlayerPosition, transform.position) / Time.deltaTime;
         previousPlayerPosition = transform.position;
+    }
+
+    public bool visualizeGroundCheck = true;
+
+    private void OnDrawGizmos()
+    {
+
+        if (Application.isPlaying)
+        {
+
+            if (visualizeGroundCheck)
+            {
+                var gizmoColor = characterController.isGrounded ? Color.green : Color.red;
+                Debug.DrawRay(transform.position, -transform.up * (characterController.height/2 + 0.2f), gizmoColor, .1f);
+            }
+        }
+
+
     }
 }

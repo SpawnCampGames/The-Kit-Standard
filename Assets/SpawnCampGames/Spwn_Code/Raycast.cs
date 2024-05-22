@@ -65,7 +65,7 @@ namespace SPWN
         {
             CalculateDirections();
 
-            if(layers != 0) // Check if layers is set to a specific layer mask
+            if (layers != 0) // Check if layers is set to a specific layer mask
             {
                 // Raycast with the specified layer mask
                 if(Physics.Raycast(transform.position,targetDir,out tempHit,rayDistance,layers))

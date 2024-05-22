@@ -51,9 +51,9 @@ namespace SPWN
     }
 
     /// <summary>
-    /// Type of Switch
+    /// Type of Physical Switch
     /// </summary>
-    public enum SwitchType { None, Single, Repeatitive, Toggle }
+    public enum SwitchType { None, Single, Repetitive, Toggle }
 
     /// <summary>
     /// Cardinal Directions
