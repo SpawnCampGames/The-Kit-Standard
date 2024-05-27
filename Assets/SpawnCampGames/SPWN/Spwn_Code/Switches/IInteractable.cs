@@ -1,4 +1,4 @@
-﻿namespace SPWN
+namespace SPWN
 {
     public interface IInteractable
     {

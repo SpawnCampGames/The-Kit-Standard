@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SPWN
+namespace NEWNAME
 {
     public class ControllerCamera : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class SpawnCampController : MonoBehaviour
@@ -259,10 +259,8 @@ public class SpawnCampController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
         if (Application.isPlaying)
         {
-
             if (visualizeGroundCheck)
             {
                 var gizmoColor = characterController.isGrounded ? Color.green : Color.red;

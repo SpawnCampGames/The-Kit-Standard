@@ -10,7 +10,6 @@ namespace SPWN
         public Direction direction;
         public Vector3 customDirection;
         public bool local;
-
         Vector3 targetDir;
         GameObject targetObj;
 
@@ -45,7 +44,7 @@ namespace SPWN
             {
                 if(local)
                 {
-                    targetDir = Utils.GetDirection(direction, this.transform);
+                    targetDir = Utils.GetDirection(direction, targetObj.transform);
                 }
                 else
                 {
@@ -71,6 +70,7 @@ namespace SPWN
                     hit = null;
                     success = false;
                 }
+                
             }
             else
             {

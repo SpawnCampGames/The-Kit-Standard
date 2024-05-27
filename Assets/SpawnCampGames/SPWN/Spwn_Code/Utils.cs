@@ -81,7 +81,6 @@ namespace SPWN
             Rect rect = new Rect(position.x, position.y, size.x, size.y);
             GUI.Label(rect, text, style);
         }
-
         #endregion
     }
 

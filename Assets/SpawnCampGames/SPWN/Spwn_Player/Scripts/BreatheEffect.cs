@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace SPWN
+namespace NEWNAME
 {
     public class BreatheEffect : MonoBehaviour
     {
