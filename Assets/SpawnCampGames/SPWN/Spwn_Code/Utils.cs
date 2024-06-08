@@ -73,12 +73,15 @@ namespace SPWN
         /// <param name="position">The position of the text on the screen.</param>
         /// <param name="size">The size of the text.</param>
         /// <param name="textColor">The color of the text.</param>
-        public static void RealtimeDebug(string text, Vector2 position, Vector2 size, Color textColor)
+        public static void RealtimeDebug(string text, Vector2 position, int fontSize, Color textColor, Vector2 widthHeight)
         {
             GUIStyle style = new GUIStyle(GUI.skin.label);
+            style.fontSize = fontSize;
             style.normal.textColor = textColor;
 
-            Rect rect = new Rect(position.x, position.y, size.x, size.y);
+
+            // Draw the text with the adjusted position and calculated size
+            Rect rect = new Rect(position.x, position.y, widthHeight.x, widthHeight.y);
             GUI.Label(rect, text, style);
         }
         #endregion
@@ -93,7 +96,7 @@ namespace SPWN
     {
         public static bool Left(bool held = false)
         {
-            if(held)
+            if (held)
             {
                 return UnityEngine.Input.GetMouseButton(0); // Returns true while the left mouse button is held down
             }
@@ -105,7 +108,7 @@ namespace SPWN
 
         public static bool Right(bool held = false)
         {
-            if(held)
+            if (held)
             {
                 return UnityEngine.Input.GetMouseButton(1); // Returns true while the right mouse button is held down
             }
@@ -117,7 +120,7 @@ namespace SPWN
 
         public static bool Middle(bool held = false)
         {
-            if(held)
+            if (held)
             {
                 return UnityEngine.Input.GetMouseButton(2); // Returns true while the middle mouse button is held down
             }
@@ -145,6 +148,6 @@ namespace SPWN
     /// Basic Axi
     /// </summary>
     public enum Axis { X, Y, Z }
-    
+
     #endregion
 }

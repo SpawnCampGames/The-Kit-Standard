@@ -3,12 +3,12 @@ using UnityEngine;
 public class FollowMouse : MonoBehaviour
 {
     public bool is2D;
-    public bool hideCursor;
-    public bool lockCursor;
+    public float distanceFromCamera = 10f; // Distance from the camera to place the object    
     public bool useRaycast;
     public float raycastOffset;
-
-    public float distanceFromCamera = 10f; // Distance from the camera to place the object
+    public bool useNormal;
+    public bool hideCursor;
+    public bool lockCursor;
 
     private void Awake()
     {
@@ -30,6 +30,11 @@ public class FollowMouse : MonoBehaviour
             {
                 Vector3 hitPosition = hit.point;
                 transform.position = new Vector3(hitPosition.x, hitPosition.y, hitPosition.z + raycastOffset);
+                
+                if (useNormal)
+                {
+                    transform.up = hit.normal;
+                }
             }
         }
         else if (is2D)

@@ -108,10 +108,10 @@ namespace SPWN
                 {
                     Vector3 circleCenter = tempHit.point;
                     Vector3 hitNormal = tempHit.normal;
-                    Vector3 circleNormal = hitNormal == Vector3.zero ? Vector3.up : hitNormal; // Ensure the normal vector is not zero
-                    Vector3 circleUp = Vector3.Cross(Vector3.up,circleNormal).normalized; // Calculate an up vector orthogonal to the normal
+                    Vector3 circleNormal = hitNormal == Vector3.zero ? Vector3.up : hitNormal; 
+                    Vector3 circleUp = Vector3.Cross(Vector3.up,circleNormal).normalized; 
                     Handles.color = Gizmos.color;
-                    Handles.DrawWireDisc(circleCenter,circleNormal,.1f); // Draw a circle with a radius of 1
+                    Handles.DrawWireDisc(circleCenter,circleNormal,.1f); 
                 }
             }
         }
