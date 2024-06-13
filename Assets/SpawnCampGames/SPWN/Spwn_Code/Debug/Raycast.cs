@@ -20,6 +20,9 @@ namespace SPWN
         public LayerMask layers;
         public bool draw = true;
 
+        [Header("Trigger Detection")]
+        public bool detectTriggers = true;
+
         [Header("Outputs")]
         bool success;
 
@@ -57,10 +60,12 @@ namespace SPWN
         {
             CalculateDirections();
 
+            QueryTriggerInteraction queryTriggerInteraction = detectTriggers ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
+
             if (layers != 0) // Check if layers is set to a specific layer mask
             {
                 // Raycast with the specified layer mask
-                if(Physics.Raycast(transform.position,targetDir,out tempHit,rayDistance,layers))
+                if(Physics.Raycast(transform.position,targetDir,out tempHit,rayDistance,layers, queryTriggerInteraction))
                 {
                     hit = tempHit.collider.gameObject;
                     success = true;
@@ -75,7 +80,7 @@ namespace SPWN
             else
             {
                 // Raycast without specifying a layer mask, hitting all layers
-                if(Physics.Raycast(transform.position,targetDir,out tempHit,rayDistance))
+                if(Physics.Raycast(transform.position,targetDir,out tempHit,rayDistance, ~0, queryTriggerInteraction))
                 {
                     hit = tempHit.collider.gameObject;
                     success = true;

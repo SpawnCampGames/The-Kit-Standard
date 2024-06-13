@@ -8,6 +8,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SpawnCampGames/Sandbox/Scenes/Sandbox.unity
     guid: 860a8828336b36e498104fda29b8605a
+  - enabled: 1
+    path: Assets/SpawnCampGames/Sandbox2D/Scenes_2D/Blank2D.unity
+    guid: fefac968077c04d43ac591919c4efd64
+  - enabled: 1
+    path: Assets/SpawnCampGames/Sandbox/Scenes/Blank3D.unity
+    guid: c6afad84bf9d9e144a1e7b8b16904b52
+  - enabled: 1
+    path: Assets/Understone/Free Bike Pack/Scenes/Demo.unity
+    guid: 73cdac320453c2144adbf2ef25bc787d
+  - enabled: 1
+    path: Assets/SpawnCampGames/Spwn_GodCam/GodCamera.unity
+    guid: a7212f3160a48c349a57fd7ca1757f5b
+  - enabled: 1
+    path: Assets/SpawnCampGames/Sandbox/Scenes/Navmesh_Sandbox3D.unity
+    guid: 3913be893654ca54ca851e16b87e10e5
+  - enabled: 1
+    path: Assets/SpawnCampGames/Sandbox2D/Scenes_2D/Sandbox2D.unity
+    guid: d74d99b2904e4404ba69eadaa718bcc2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2de8b8cecd36bd6489af8eb19bb8f3c4, type: 3}
   m_UseUCBPForAssetBundles: 0

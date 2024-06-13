@@ -8,9 +8,6 @@ public class WidgetEditor : Editor
     // Maximum width for the logo
     private const float MaxLogoWidth = 307f;
 
-    // Width of the documentation button
-    private const float ButtonWidths = 153f;
-
     // Boolean variable to control custom inspector drawing
     private bool drawCustomInspector = true;
 

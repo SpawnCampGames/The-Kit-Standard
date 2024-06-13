@@ -10,14 +10,14 @@ public class InteractRaycast : MonoBehaviour
     float distance;
 
     Ray ray;
-
+    bool draw;
     [SerializeField]
     LayerMask mask;
 
     Camera cam;
 
     public KeyCode interactKey = KeyCode.E;
-    bool draw;
+
 
     [SerializeField] GameObject cachedInteractable;
 
@@ -51,7 +51,6 @@ public class InteractRaycast : MonoBehaviour
             cachedInteractable = null;
             draw = false;
         }
-
     }
 
     private void OnDrawGizmos()
