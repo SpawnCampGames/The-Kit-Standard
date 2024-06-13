@@ -31,54 +31,62 @@ public class FrameCalculator : MonoBehaviour
 
     void Start()
     {
-        // get starting and ending positions for ping pong animation
+        // Get starting and ending positions for ping pong animation
         pingPongStartingPosition = pingPongBlip.rectTransform.anchoredPosition;
         pingPongEndingPosition = pingPongStartingPosition + Vector2.right * (pingPongMax - pingPongMin);
     }
 
     void Update()
     {
-        // calculate ping-pong position
-        pingPongPosition = Mathf.PingPong(Time.time * pingPongSpeed,pingPongMax - pingPongMin) + pingPongMin;
-        pingPongBlip.rectTransform.anchoredPosition = Vector2.Lerp(pingPongStartingPosition,pingPongEndingPosition,pingPongPosition / (pingPongMax - pingPongMin));
+        // Calculate the length of one ping-pong cycle
+        float cycleLength = pingPongMax - pingPongMin;
 
-        // calculate framerate only if time is passing
+        // Convert pingPongSpeed to units per second
+        float unitsPerSecond = pingPongSpeed * cycleLength * 2; // Multiply by 2 because ping-pong goes back and forth
+
+        // Calculate ping-pong position
+        pingPongPosition = Mathf.PingPong(Time.time * unitsPerSecond, cycleLength) + pingPongMin;
+        pingPongBlip.rectTransform.anchoredPosition = Vector2.Lerp(pingPongStartingPosition, pingPongEndingPosition, pingPongPosition / cycleLength);
+
+        // Calculate framerate only if time is passing
         float dt = Time.deltaTime;
-        if(dt > 0.0f)
+        if (dt > 0.0f)
         {
             totalTime += dt;
             fps = 1.0f / dt;
 
-            frameRateText.text = "REAL : " + fps.ToString("F0").PadLeft(7,'0');
+            frameRateText.text = "REAL : " + fps.ToString("F0").PadLeft(7, '0');
 
-            // rolling average framerate
+            // Rolling average framerate
             frameCounts.Enqueue(fps);
-            if(totalTime >= averageDuration)
-            {
-                while(totalTime - frameCounts.Peek() >= averageDuration)
-                {
-                    frameCounts.Dequeue();
-                }
 
+            // Check if the queue has items before processing
+            while (frameCounts.Count > 0 && totalTime - frameCounts.Peek() >= averageDuration)
+            {
+                frameCounts.Dequeue();
+            }
+
+            if (frameCounts.Count > 0)
+            {
                 float sum = 0.0f;
-                foreach(float frameCount in frameCounts)
+                foreach (float frameCount in frameCounts)
                 {
                     sum += frameCount;
                 }
                 averageFrameRate = sum / frameCounts.Count;
-                avgFrameRateText.text = "ROLL : " + averageFrameRate.ToString("F0").PadLeft(7,'0');
+                avgFrameRateText.text = "ROLL : " + averageFrameRate.ToString("F0").PadLeft(7, '0');
                 averageCalculated = true;
             }
 
-            // update lowest framerate after average is calculated
-            if(averageCalculated && fps < lowestFrameRate)
+            // Update lowest framerate after average is calculated
+            if (averageCalculated && fps < lowestFrameRate)
             {
                 lowestFrameRate = fps;
-                lowestFrameRateText.text = "LOW : " + lowestFrameRate.ToString("F0").PadLeft(7,'0');
+                lowestFrameRateText.text = "LOW : " + lowestFrameRate.ToString("F0").PadLeft(7, '0');
             }
         }
 
-        // display time
-        timeText.text = "TIME : " + Time.time.ToString("F4").PadLeft(7,'0');
+        // Display time
+        timeText.text = "TIME : " + Time.time.ToString("F4").PadLeft(7, '0');
     }
 }
