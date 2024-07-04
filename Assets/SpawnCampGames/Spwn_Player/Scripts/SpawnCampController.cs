@@ -1,4 +1,5 @@
 using UnityEngine;
+using SPWN;
 
 [RequireComponent(typeof(CharacterController))]
 public class SpawnCampController : MonoBehaviour
@@ -26,6 +27,8 @@ public class SpawnCampController : MonoBehaviour
     [SerializeField] private bool isSliding;
     [SerializeField] private bool obstacleOverhead;
     [SerializeField] private bool wasGrounded;
+
+
 
     [Header("Variables Assigned Via Script")]
     private AudioSource audioSource;
