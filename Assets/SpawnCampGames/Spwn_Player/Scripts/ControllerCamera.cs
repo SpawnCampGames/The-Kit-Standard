@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NEWNAME
+namespace SPWN
 {
     public class ControllerCamera : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace NEWNAME
 
         void Start()
         {
-            LockCursors();
+            //LockCursors();
         }
 
         private void OnEnable()

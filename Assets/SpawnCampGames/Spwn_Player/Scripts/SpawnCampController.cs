@@ -1,22 +1,28 @@
 using UnityEngine;
 using SPWN;
+using Debug = UnityEngine.Debug;
 
+/// <summary>
+/// Character Controller
+/// Includes: Walking, Running, Jumping, Crouching, and Sliding
+/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class SpawnCampController : MonoBehaviour
 {
     #region Variables
     [Header("Player Dynamic Floats")]
+    [Tooltip("The gravity simulation applied to the player.")]
     [SerializeField] private float gravitySim;
     [SerializeField] private float jumpCounter;
     [SerializeField] private float initialSpeed;
-    float finalSpeed;
+    private float finalSpeed;
     [SerializeField] private float playersActualSpeed;
     [SerializeField] private float runningJumpModifier;
 
     [Header("Player Dynamic Vectors")]
     [SerializeField] private Vector3 groundVector;
     [SerializeField] private Vector3 airVector;
-    public Vector3 finalVector;
+    private Vector3 finalVector;
     [SerializeField] private Vector3 jump;
     [SerializeField] private Vector3 previousPlayerPosition;
 
@@ -28,22 +34,21 @@ public class SpawnCampController : MonoBehaviour
     [SerializeField] private bool obstacleOverhead;
     [SerializeField] private bool wasGrounded;
 
-
-
     [Header("Variables Assigned Via Script")]
     private AudioSource audioSource;
-    public CharacterController characterController;
+    [SerializeField] private CharacterController characterController;
 
     [Header("Variables Assigned Via Editor")]
     [SerializeField] private ControllerSettings playerSettings;
-    public AudioClip jumpSound;
-    public AudioClip landSound;
-    public Camera mainCamera;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip landSound;
+    [SerializeField] private Camera mainCamera;
 
     private float horizontalInput;
     private float verticalInput;
 
-    public SPWN.CamRebounder headbob;
+    [SerializeField]
+    private CamRebounder headbob;
 
     #endregion
 
@@ -95,7 +100,7 @@ public class SpawnCampController : MonoBehaviour
     private void Move()
     {
         ApplyGravity();
-        CalculateSpeed();
+        GetDesiredMovementSpeed();
 
         finalVector =
             (groundVector * finalSpeed) +
@@ -108,7 +113,7 @@ public class SpawnCampController : MonoBehaviour
         }
 
         characterController.Move(finalVector * Time.deltaTime);
-        jump = Vector3.Lerp(jump, Vector3.zero, playerSettings.jumpSmoothing * Time.deltaTime);
+        jump = Vector3.Lerp(jump, Vector3.zero, playerSettings.jumpDamp * Time.deltaTime);
     }
 
     private void ProcessPlayerInput()
@@ -123,8 +128,8 @@ public class SpawnCampController : MonoBehaviour
             if (isCrouching && isRunning)
             {
                 isSliding = true;
-                groundVector.x = Mathf.Lerp(groundVector.x, 0, playerSettings.slideSlowSpeed * Time.deltaTime);
-                groundVector.z = Mathf.Lerp(groundVector.z, 0, playerSettings.slideSlowSpeed * Time.deltaTime);
+                groundVector.x = Mathf.Lerp(groundVector.x, 0, playerSettings.slideDamp * Time.deltaTime);
+                groundVector.z = Mathf.Lerp(groundVector.z, 0, playerSettings.slideDamp * Time.deltaTime);
 
                 if (Mathf.Abs(groundVector.x) < .175f && Mathf.Abs(groundVector.z) < .175f)
                     isRunning = false;
@@ -139,7 +144,7 @@ public class SpawnCampController : MonoBehaviour
                     groundVector = transform.TransformDirection(groundVector);
                 }
                 else
-                    groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.groundMomentumDampingSpeed * Time.deltaTime);
+                    groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.groundDamp * Time.deltaTime);
             }
         }
         else
@@ -150,7 +155,7 @@ public class SpawnCampController : MonoBehaviour
 
             //im getting this kind of stuff while its still being created i think
             airVector = Vector3.Lerp(airVector, airVector + airControlVector, playerSettings.airControlStrength * Time.deltaTime);
-            groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.momentumDampingSpeed * Time.deltaTime);
+            groundVector = Vector3.Lerp(groundVector, Vector3.zero, playerSettings.airDamp * Time.deltaTime);
         }
     }
 
@@ -202,7 +207,7 @@ public class SpawnCampController : MonoBehaviour
         if (isCrouching)
         {
             RaycastHit hit;
-            if (Physics.SphereCast(transform.position + playerSettings.ceilingChkRaycastOffset, 1f, transform.up, out hit, playerSettings.ceilingChkRaycastDist))
+            if (Physics.SphereCast(transform.position + playerSettings.roofCheckOffset, 1f, transform.up, out hit, playerSettings.roofCheckDistance))
                 obstacleOverhead = true;
             else
                 obstacleOverhead = false;
@@ -225,7 +230,7 @@ public class SpawnCampController : MonoBehaviour
         gravitySim = 0f;
     }
 
-    public void CalculateSpeed()
+    public void GetDesiredMovementSpeed()
     {
         isAiming = Input.GetMouseButton(1);
 
@@ -271,4 +276,4 @@ public class SpawnCampController : MonoBehaviour
             }
         }
     }
-}
+}  

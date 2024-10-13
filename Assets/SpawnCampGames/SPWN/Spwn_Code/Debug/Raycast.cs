@@ -43,17 +43,10 @@ namespace SPWN
             {
                 targetDir = customDirection;
             }
-            else
-            {
-                if(local)
-                {
-                    targetDir = Utils.GetDirection(direction, targetObj.transform);
-                }
-                else
-                {
-                    targetDir = Utils.GetDirection(direction);
-                }
-            }
+            
+            targetDir = local
+              ? direction.RealDirection(targetObj.transform)
+              : direction.RealDirection();
         }
 
         void Update()

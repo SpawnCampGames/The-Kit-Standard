@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using SPWN;
+using Debug = UnityEngine.Debug;
 
 public class Switch : MonoBehaviour, IInteractable
 {

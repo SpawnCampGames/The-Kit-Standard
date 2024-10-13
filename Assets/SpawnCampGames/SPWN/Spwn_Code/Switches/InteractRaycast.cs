@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Camera = UnityEngine.Camera;
 using SPWN;
@@ -37,6 +35,7 @@ public class InteractRaycast : MonoBehaviour
                 if(Input.GetKeyDown(interactKey))
                 {
                     interactable.Interact();
+                    Dbug.Italic($"Interacted with {cachedInteractable.name}");
                 }
             }
             else

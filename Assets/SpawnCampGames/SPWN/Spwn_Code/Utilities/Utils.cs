@@ -1,136 +1,135 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 namespace SPWN
 {
     /// <summary>
-    /// Utility class for SpawnCampGames.
+    /// Utility class for common operations.
     /// </summary>
     public static class Utils
     {
-
         #region Directions
-
         /// <summary>
-        /// Get a direction vector corresponding to the specified cardinal direction.
+        /// Get a direction vector based on the given cardinal direction.
         /// </summary>
         /// <param name="direction">The cardinal direction.</param>
+        /// <param name="transform">Optional transform for local space directions.</param>
         /// <returns>A vector representing the specified direction.</returns>
-        public static Vector3 GetDirection(Direction direction)
+        public static Vector3 RealDirection(this Direction direction, Transform transform = null)
         {
-            switch (direction)
+            // Early return for null transform (world space directions)
+            if (transform == null)
             {
-                case Direction.North:
-                    return Vector3.forward;
-                case Direction.West:
-                    return -Vector3.right;
-                case Direction.South:
-                    return -Vector3.forward;
-                case Direction.East:
-                    return Vector3.right;
-                case Direction.Up:
-                    return Vector3.up;
-                case Direction.Down:
-                    return -Vector3.up;
-                default:
-                    return Vector3.zero;
+                return direction switch
+                {
+                    Direction.North => Vector3.forward,
+                    Direction.West => -Vector3.right,
+                    Direction.South => -Vector3.forward,
+                    Direction.East => Vector3.right,
+                    Direction.Up => Vector3.up,
+                    Direction.Down => -Vector3.up,
+                    _ => Vector3.zero
+                };
             }
-        }
 
-        /// <summary>
-        /// Get a direction vector corresponding to the specified local direction relative to a transform.
-        /// </summary>
-        /// <param name="transform">The transform defining the local space.</param>
-        /// <param name="localDirection">The local direction.</param>
-        /// <returns>A vector representing the specified local direction.</returns>
-        public static Vector3 GetDirection(Direction localDirection, Transform transform)
-        {
-            switch (localDirection)
+            // Return based on the transform (local space directions)
+            return direction switch
             {
-                case Direction.North:
-                    return transform.forward;
-                case Direction.West:
-                    return -transform.right;
-                case Direction.South:
-                    return -transform.forward;
-                case Direction.East:
-                    return transform.right;
-                case Direction.Up:
-                    return transform.up;
-                case Direction.Down:
-                    return -transform.up;
-                default:
-                    return Vector3.zero;
-            }
+                Direction.North => transform.forward,
+                Direction.West => -transform.right,
+                Direction.South => -transform.forward,
+                Direction.East => transform.right,
+                Direction.Up => transform.up,
+                Direction.Down => -transform.up,
+                _ => Vector3.zero
+            };
         }
-
         #endregion
 
         #region Input / Debugging
         /// <summary>
-        /// Display text on the screen in real-time for debugging purposes.
+        /// Display real-time debug text on screen.
         /// </summary>
-        /// <param name="text">The text to display.</param>
-        /// <param name="position">The position of the text on the screen.</param>
-        /// <param name="size">The size of the text.</param>
-        /// <param name="textColor">The color of the text.</param>
-        public static void RealtimeDebug(string text, Vector2 position, int fontSize, Color textColor, Vector2 widthHeight)
+        public static void RealtimeDebug(string text, Vector2 position, int fontSize, Color textColor, Color outlineColor, int outlineThickness, int padding)
         {
-            GUIStyle style = new GUIStyle(GUI.skin.label);
-            style.fontSize = fontSize;
-            style.normal.textColor = textColor;
+            GUIStyle style = new GUIStyle(GUI.skin.label)
+            {
+                fontSize = fontSize,
+                normal = { textColor = textColor },
+                alignment = TextAnchor.UpperLeft
+            };
 
+            // Calculate size and adjust for padding/outline
+            Vector2 textSize = style.CalcSize(new GUIContent(text));
+            float width = textSize.x + 2 * (padding + outlineThickness);
+            float height = textSize.y + 2 * (padding + outlineThickness);
+            Vector2 adjustedPosition = position - new Vector2((width - textSize.x) / 2, (height - textSize.y) / 2);
 
-            // Draw the text with the adjusted position and calculated size
-            Rect rect = new Rect(position.x, position.y, widthHeight.x, widthHeight.y);
-            GUI.Label(rect, text, style);
+            // Draw outline
+            DrawOutline(new Rect(adjustedPosition.x, adjustedPosition.y, width, height), outlineColor, outlineThickness);
+
+            // Draw main text
+            GUI.Label(new Rect(adjustedPosition.x + padding + outlineThickness, adjustedPosition.y + padding + outlineThickness, textSize.x, textSize.y), text, style);
         }
+
+        private static void DrawOutline(Rect rect, Color color, int thickness)
+        {
+            Color originalColor = GUI.color;
+            GUI.color = color;
+
+            // Draw top, bottom, left, right outlines
+            GUI.DrawTexture(new Rect(rect.x - thickness, rect.y - thickness, rect.width + 2 * thickness, thickness), Texture2D.whiteTexture);
+            GUI.DrawTexture(new Rect(rect.x - thickness, rect.y + rect.height, rect.width + 2 * thickness, thickness), Texture2D.whiteTexture);
+            GUI.DrawTexture(new Rect(rect.x - thickness, rect.y - thickness, thickness, rect.height + 2 * thickness), Texture2D.whiteTexture);
+            GUI.DrawTexture(new Rect(rect.x + rect.width, rect.y - thickness, thickness, rect.height + 2 * thickness), Texture2D.whiteTexture);
+
+            GUI.color = originalColor;
+        }
+        #endregion
+
+        #region Colors
+        /// <summary>
+        /// Converts a hex string to a Color.
+        /// </summary>
+        public static Color HexToColor(string hex)
+        {
+            hex = hex.Replace("#", ""); // Strip '#' if present
+            if (hex.Length != 6) return Color.black; // Fallback in case of invalid input
+
+            byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+            byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+            return new Color32(r, g, b, 255); // Always return full opacity
+        }
+        #endregion
+
+        #region Distance
+        /// <summary>
+        /// Returns the squared distance between two points.
+        /// </summary>
+        public static float SquaredDistance(Vector3 a, Vector3 b) => (a - b).sqrMagnitude;
+
+        /// <summary>
+        /// Checks if two points are within a specified range.
+        /// </summary>
+        public static bool IsInRange(this Vector3 a, Vector3 b, float range) => SquaredDistance(a, b) < range * range;
         #endregion
     }
 
     #region Mouse Input
-
     /// <summary>
-    /// Utility class providing access to mouse input states.
+    /// Utility class for mouse input handling.
     /// </summary>
     public static class Mouse
     {
-        public static bool Left(bool held = false)
-        {
-            if (held)
-            {
-                return UnityEngine.Input.GetMouseButton(0); // Returns true while the left mouse button is held down
-            }
-            else
-            {
-                return UnityEngine.Input.GetMouseButtonDown(0); // Returns true during the frame the left mouse button is pressed down
-            }
-        }
+        public static bool Button(int button, bool held = false) =>
+            held ? UnityEngine.Input.GetMouseButton(button) : UnityEngine.Input.GetMouseButtonDown(button);
 
-        public static bool Right(bool held = false)
-        {
-            if (held)
-            {
-                return UnityEngine.Input.GetMouseButton(1); // Returns true while the right mouse button is held down
-            }
-            else
-            {
-                return UnityEngine.Input.GetMouseButtonDown(1); // Returns true during the frame the right mouse button is pressed down
-            }
-        }
-
-        public static bool Middle(bool held = false)
-        {
-            if (held)
-            {
-                return UnityEngine.Input.GetMouseButton(2); // Returns true while the middle mouse button is held down
-            }
-            else
-            {
-                return UnityEngine.Input.GetMouseButtonDown(2); // Returns true during the frame the middle mouse button is pressed down
-            }
-        }
+        public static bool Left(bool held = false) => Button(0, held);
+        public static bool Right(bool held = false) => Button(1, held);
+        public static bool Middle(bool held = false) => Button(2, held);
     }
-
     #endregion
 
     #region Enums
