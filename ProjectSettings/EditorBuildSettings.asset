@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SpawnCampGames/Sandbox3D/Scenes_3D/Sandbox.unity
+    path: Assets/SpawnCampGames/TheKit/Sandbox3D/Scenes_3D/Sandbox.unity
     guid: 860a8828336b36e498104fda29b8605a
   - enabled: 1
-    path: Assets/SpawnCampGames/Sandbox2D/Scenes_2D/Blank2D.unity
+    path: Assets/SpawnCampGames/TheKit/Sandbox2D/Scenes_2D/Blank2D.unity
     guid: fefac968077c04d43ac591919c4efd64
   - enabled: 1
-    path: Assets/SpawnCampGames/Sandbox3D/Scenes_3D/Blank3D.unity
+    path: Assets/SpawnCampGames/TheKit/Sandbox3D/Scenes_3D/Blank3D.unity
     guid: c6afad84bf9d9e144a1e7b8b16904b52
   - enabled: 1
-    path: Assets/SpawnCampGames/Spwn_GodCam/GodCamera.unity
+    path: Assets/SpawnCampGames/TheKit/Spwn_GodCam/GodCamera.unity
     guid: a7212f3160a48c349a57fd7ca1757f5b
   - enabled: 1
-    path: Assets/SpawnCampGames/Sandbox2D/Scenes_2D/Sandbox2D.unity
+    path: Assets/SpawnCampGames/TheKit/Sandbox2D/Scenes_2D/Sandbox2D.unity
     guid: d74d99b2904e4404ba69eadaa718bcc2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2de8b8cecd36bd6489af8eb19bb8f3c4, type: 3}

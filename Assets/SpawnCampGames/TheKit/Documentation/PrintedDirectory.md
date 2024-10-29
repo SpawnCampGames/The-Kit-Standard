@@ -1,0 +1,354 @@
+# Folder Structure
+
+ AntennaSpring/
+  - Springy.cs
+  - Springy.prefab
+ Fonts/
+  - Kenney Rocket.ttf
+ Graphics/
+  - ICON.PAK.1.png
+  - ICON.PAK.10.png
+  - ICON.PAK.11.png
+  - ICON.PAK.12.png
+  - ICON.PAK.2.png
+  - ICON.PAK.3.png
+  - ICON.PAK.4.png
+  - ICON.PAK.5.png
+  - ICON.PAK.6.png
+  - ICON.PAK.7.png
+  - ICON.PAK.8.png
+  - ICON.PAK.9.png
+ READ/
+-- TERMS.PAK/
+---- Kenny/
+      - LIC_KENNY_FONTPAK.txt
+      - LIC_KENNY_ICONPAK.txt
+ SpawnCampGames/
+-- TheKit/
+---- Documentation/
+      - PrintedDirectory.md
+      - ProjectLegend.md
+---- Editor/
+------ Inspectors/
+        - HierarchyIconEditor.cs
+        - SpawnButtonEditor.cs
+        - WidgetEditor.cs
+------ Tools/
+        - DbugDiagnostics.cs
+        - FileCreator.cs
+        - SystemSpecsDebug.cs
+------ Windows/
+        - AboutEditorWindow.cs
+        - BaseEditorWindow.cs
+        - ExampleEditorWindows.cs
+        - PrintDirectoryEditorWindow.cs
+        - ProjectLegendEditorWindow.cs
+        - SearchHierarchyEditorWindow.cs
+        - WindowData.cs
+---- InputSystem/
+      - InputSystem_Actions.cs
+      - InputSystem_Actions.inputactions
+      - Test_InputSystem.cs
+---- Platformer/
+------ Animation/
+        - Idle.anim
+        - Jump.anim
+        - Land.anim
+        - Visual.controller
+------ Materials/
+        - Dot.png
+        - DottedLIne.mat
+        - Dust.mat
+        - Player.physicsMaterial2D
+        - SoftCircle.png
+        - Trail.mat
+------ Prefabs/
+        - Player Controller 2D.prefab
+------ Settings/
+        - BaseCharacter_2D.asset
+------ Sprites/
+        - capsuleman.png
+        - Circle.png
+      - CharacterAnimator_2D.cs
+      - CharacterController_2D.cs
+      - CharacterSettings2D.cs
+---- Sandbox2D/
+------ Prefabs_2D/
+        - SpawnThing_2D.prefab
+------ Scenes_2D/
+        - ArtSandbox2D.unity
+        - Blank2D.unity
+        - Blank2DwMouse.unity
+        - Sandbox2D.unity
+---- Sandbox3D/
+------ Prefabs_3D/
+-------- AntiAircraftTurret/
+          - Bullet.prefab
+          - BulletImpact.cs
+          - CannonTarget.prefab
+          - PredictiveMarker.prefab
+          - Turret.prefab
+          - TurretController.cs
+        - CapsuleShades.fbx
+        - Chunky_Block.prefab
+        - Tank.prefab
+------ Scenes_3D/
+        - Blank3D.unity
+        - MouseIn3D.unity
+        - Sandbox.unity
+---- SPWN/
+------ Audio/
+        - Spawn_Beep.wav
+        - Spawn_Dial_Click.wav
+------ Code/
+-------- Debug/
+---------- FramerateWidget/
+            - FrameCalcInit.cs
+            - FrameCalculator.cs
+            - FrameCalculator.prefab
+---------- Movement/
+            - MovementDebugger.cs
+          - DebugCanvas.prefab
+          - DrawBox.cs
+          - Raycast.cs
+          - ScreenWriter.cs
+-------- Events/
+---------- Actions/
+            - SimpleAction.cs
+---------- Collisions/
+            - Trigger.cs
+-------- Flags/
+---------- FlagTypes/
+            - Blue.cs
+            - Green.cs
+            - Indigo.cs
+            - Orange.cs
+            - Red.cs
+            - Violet.cs
+            - Yellow.cs
+          - Flag.cs
+-------- Management/
+          - AudioManager.cs
+          - FrameCapper.cs
+          - GameManager.cs
+-------- Mouse/
+---------- Buttons/
+            - ButtonExtended.cs
+            - ImageButton.cs
+            - SpriteButton.cs
+          - FollowMouse.cs
+-------- Movement/
+          - Lift2D.cs
+          - Lift3D.cs
+          - SmoothFollow.cs
+          - SmoothFollow.prefab
+          - Tank.cs
+-------- Physics/
+          - Physx.cs
+          - PhysxTest.cs
+-------- Radio/
+          - RX.cs
+          - TX.cs
+-------- Rotation/
+          - Rotate.cs
+-------- Springs/
+          - FloatSpring.cs
+          - FloatSpringTester.prefab
+-------- Switches/
+          - IInteractable.cs
+          - InteractRaycast.cs
+          - Pickup.cs
+          - Switch.cs
+-------- Utilities/
+          - GlobalTransform.cs
+          - Singleton.cs
+          - Utils.cs
+------ Graphics/
+-------- Branding/
+          - SpawnCampGames.png
+          - Spwn_Gamepad.png
+-------- RC_Radio/
+          - SolidCircle.png
+          - Spwn_Gimbal.png
+          - Spwn_Radio.png
+          - Spwn_Radio2.png
+          - Spwn_Signal.png
+-------- Sprites/
+          - Clouds.png
+          - Cursor_A.png
+          - Gamepad_Icon.png
+          - Hand_Cursor.png
+          - HollowCircle.png
+          - MouseCursor.png
+          - power.png
+          - SolidCircle.png
+          - Spawn_Cog.png
+          - Spawn_Rounded_WhiteSprite.png
+          - Speck.png
+          - Speck_Transparent.png
+          - up.png
+          - warning.png
+-------- Textures/
+          - Gradient.png
+          - GridWhite1.png
+          - Spawn_GroundTexture.png
+          - Spawn_GroundTexture2.png
+          - TestMaterial.mat
+          - TestMaterial2.mat
+          - TestMaterial3.mat
+------ Materials/
+-------- Core/
+          - Blue_Core.mat
+          - Gray_Core.mat
+          - Green_Core.mat
+          - Indigo_Core.mat
+          - Orange_Core.mat
+          - Red_Core.mat
+          - Violet_Core.mat
+          - Yellow_Core.mat
+-------- Emissives/
+          - Blue_Em_5.mat
+          - Green_Em_5.mat
+          - Red_Em_5.mat
+-------- Ground/
+          - Spawn_Ground_1000u.mat
+          - Spawn_Ground_100u.mat
+          - Spawn_Ground_250u.mat
+-------- Practicals/
+          - Enemy_Practical.mat
+          - Info_Practical.mat
+          - Interact_Practical.mat
+          - Rigidbody_Practical.mat
+          - Unique_Practical.mat
+-------- Transparents/
+          - Blue_Alpha_4.mat
+          - Green_Alpha_4.mat
+          - Red_Alpha_4.mat
+------ Meshs/
+        - WheelCollider.fbx
+------ Prefabs/
+-------- GREEK/
+          - ALPHA-BLUE.prefab
+          - ALPHA-GREEN.prefab
+          - ALPHA-RED.prefab
+          - BETA-BLUE.prefab
+          - BETA-GREEN.prefab
+          - BETA-RED.prefab
+          - DELTA-BLUE.prefab
+          - DELTA-GREEN.prefab
+          - DELTA-RED.prefab
+          - GAMMA-BLUE.prefab
+          - GAMMA-GREEN.prefab
+          - GAMMA-RED.prefab
+-------- Managers/
+          - Audio.prefab
+        - Test_Prefab 2.prefab
+        - Test_Prefab 3.prefab
+        - Test_Prefab 4.prefab
+        - Test_Prefab.prefab
+        - Widget.prefab
+------ Tools/
+-------- Hierarchy/
+          - HierarchyIcon.cs
+        - Dbug.cs
+        - SpawnButtonAttribute.cs
+        - Widget.cs
+---- Spwn_Draw/
+------ Prefabs/
+        - SpawnDrawLinePrefab.prefab
+------ Scripts/
+        - SpawnDrawLineRenderer.cs
+        - SpawnDrawPixel.cs
+      - SpawnDrawLineR.prefab
+      - SpawnDrawPixel.prefab
+---- Spwn_GodCam/
+------ Scripts/
+        - CameraController.cs
+------ Settings/
+        - LightingData.asset
+        - ReflectionProbe-0.exr
+      - CameraRig.prefab
+      - GodCamera.unity
+---- Spwn_Player/
+------ Scripts/
+        - BreatheEffect.cs
+        - CameraZoom.cs
+        - CamRebounder.cs
+        - CharacterSettings3D.cs
+        - ControllerCamera.cs
+        - PlayerHealth.cs
+        - SpawnCampController.cs
+        - SpawnCampControllerLite.cs
+        - WeaponSway.cs
+------ Settings/
+        - BaseCharacter_3D.asset
+      - Controller_Material.mat
+      - Controller_Material_Lite.mat
+      - SpawnCampController.prefab
+      - SpawnCampController_Lite.prefab
+-- TheKit_URP/
+  - Slippery.physicMaterial
+ TextMesh Pro/
+-- Documentation/
+    - TextMesh Pro User Guide 2016.pdf
+-- Fonts/
+    - LiberationSans - OFL.txt
+    - LiberationSans.ttf
+-- Resources/
+---- Fonts & Materials/
+      - Kenney Rocket SDF.asset
+      - LiberationSans SDF - Drop Shadow.mat
+      - LiberationSans SDF - Fallback.asset
+      - LiberationSans SDF - Outline.mat
+      - LiberationSans SDF Material.mat
+      - LiberationSans SDF.asset
+      - NewestMaterial.mat
+---- Sprite Assets/
+      - EmojiOne.asset
+      - InlineIcons.png
+      - MixedIndexTest.asset
+---- Style Sheets/
+      - Default Style Sheet.asset
+    - LineBreaking Following Characters.txt
+    - LineBreaking Leading Characters.txt
+    - TMP Settings.asset
+-- Shaders/
+    - SDFFunctions.hlsl
+    - TMPro.cginc
+    - TMPro_Mobile.cginc
+    - TMPro_Properties.cginc
+    - TMPro_Surface.cginc
+    - TMP_Bitmap-Custom-Atlas.shader
+    - TMP_Bitmap-Mobile.shader
+    - TMP_Bitmap.shader
+    - TMP_SDF Overlay.shader
+    - TMP_SDF SSD.shader
+    - TMP_SDF-HDRP LIT.shadergraph
+    - TMP_SDF-HDRP UNLIT.shadergraph
+    - TMP_SDF-Mobile Masking.shader
+    - TMP_SDF-Mobile Overlay.shader
+    - TMP_SDF-Mobile SSD.shader
+    - TMP_SDF-Mobile-2-Pass.shader
+    - TMP_SDF-Mobile.shader
+    - TMP_SDF-Surface-Mobile.shader
+    - TMP_SDF-Surface.shader
+    - TMP_SDF-URP Lit.shadergraph
+    - TMP_SDF-URP Unlit.shadergraph
+    - TMP_SDF.shader
+    - TMP_Sprite.shader
+-- Sprites/
+    - EmojiOne Attribution.txt
+    - EmojiOne.json
+    - EmojiOne.png
+ TF-10142024/
+  - HideWhenBehind.cs
+ TF-10222024/
+  - CenterPointSpawner.cs
+- Discord.cs
+- FuturePosition.cs
+- InfiniteFloor.cs
+- InfiniteFloor2D.cs
+- InfiniteFloor_OG.cs
+- LineDrawer.cs
+- MouseInteract.cs
+- RotateTowardsMouse2D.cs
