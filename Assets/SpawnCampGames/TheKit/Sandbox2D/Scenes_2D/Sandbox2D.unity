@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -512,7 +513,6 @@ MonoBehaviour:
   max: {x: 100, y: 100}
   remapCoords: 1
   remappedCoords: {x: 0, y: 0}
-  debugScreenWriter: {fileID: 516522880}
 --- !u!4 &436925111
 Transform:
   m_ObjectHideFlags: 0
@@ -3136,6 +3136,10 @@ PrefabInstance:
     - target: {fileID: 4163286967053223821, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
       propertyPath: m_Name
       value: Player Controller 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163286967053223821, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
       propertyPath: endPoint

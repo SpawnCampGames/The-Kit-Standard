@@ -16,6 +16,7 @@ public class Switch : MonoBehaviour, IInteractable
     bool hasActivated;
 
     public float timeTilReset = 2.5f;
+    
     float switchTime;
 
     private void Awake()

@@ -34,8 +34,6 @@
         - SpawnButtonEditor.cs
         - WidgetEditor.cs
 ------ Tools/
-        - DbugDiagnostics.cs
-        - FileCreator.cs
         - SystemSpecsDebug.cs
 ------ Windows/
         - AboutEditorWindow.cs
@@ -81,17 +79,16 @@
         - Blank2DwMouse.unity
         - Sandbox2D.unity
 ---- Sandbox3D/
+------ AATurret/
+        - Bullet.prefab
+        - BulletImpact.cs
+        - CannonTarget.prefab
+        - PredictiveMarker.prefab
+        - Turret.prefab
+        - TurretController.cs
 ------ Prefabs_3D/
--------- AntiAircraftTurret/
-          - Bullet.prefab
-          - BulletImpact.cs
-          - CannonTarget.prefab
-          - PredictiveMarker.prefab
-          - Turret.prefab
-          - TurretController.cs
         - CapsuleShades.fbx
         - Chunky_Block.prefab
-        - Tank.prefab
 ------ Scenes_3D/
         - Blank3D.unity
         - MouseIn3D.unity
@@ -143,6 +140,7 @@
           - SmoothFollow.cs
           - SmoothFollow.prefab
           - Tank.cs
+          - Tank.prefab
 -------- Physics/
           - Physx.cs
           - PhysxTest.cs
@@ -226,6 +224,10 @@
           - Red_Alpha_4.mat
 ------ Meshs/
         - WheelCollider.fbx
+------ Physics_Materials/
+-------- Materials2D/
+-------- Materials3D/
+          - Slippery.physicMaterial
 ------ Prefabs/
 -------- GREEK/
           - ALPHA-BLUE.prefab
@@ -251,6 +253,8 @@
 -------- Hierarchy/
           - HierarchyIcon.cs
         - Dbug.cs
+        - DbugDiagnostics.cs
+        - FileCreator.cs
         - SpawnButtonAttribute.cs
         - Widget.cs
 ---- Spwn_Draw/
@@ -286,8 +290,6 @@
       - Controller_Material_Lite.mat
       - SpawnCampController.prefab
       - SpawnCampController_Lite.prefab
--- TheKit_URP/
-  - Slippery.physicMaterial
  TextMesh Pro/
 -- Documentation/
     - TextMesh Pro User Guide 2016.pdf
@@ -344,6 +346,7 @@
   - HideWhenBehind.cs
  TF-10222024/
   - CenterPointSpawner.cs
+- CameraBoundsCollider.cs
 - Discord.cs
 - FuturePosition.cs
 - InfiniteFloor.cs
