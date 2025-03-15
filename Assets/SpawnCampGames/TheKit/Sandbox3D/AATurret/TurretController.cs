@@ -157,11 +157,7 @@ namespace SPWN
             {
                 rb.linearVelocity = firingPosition.transform.forward * bulletSpeed;
             }
-
-            // Optionally, you can add more logic here for bullet behavior, like applying effects or damage
         }
-
-
 
         private void OnDrawGizmos()
         {

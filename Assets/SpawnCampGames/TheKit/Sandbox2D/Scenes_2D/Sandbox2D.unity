@@ -559,9 +559,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: Sandbox2D - Platformer
-  textColor: {r: 0.7874162, g: 0.5613208, b: 1, a: 1}
+  textColor: {r: 0, g: 1, b: 0.8857477, a: 1}
   textSize: 10
-  offset: {x: 40, y: 40}
+  offset: {x: 0, y: 0}
   outlineColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   outlineThickness: 2
   padding: 2
@@ -3109,50 +3109,46 @@ PrefabInstance:
       propertyPath: crosshairTransform
       value: 
       objectReference: {fileID: 436925111}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 4926485229234282897}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 4926485229234282896}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: jumpParticles
-      value: 
-      objectReference: {fileID: 4926485229764793284}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: landParticles
-      value: 
-      objectReference: {fileID: 4926485227633512765}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: moveParticles
-      value: 
-      objectReference: {fileID: 4926485228507977575}
-    - target: {fileID: 2993145100511640549, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: launchParticles
-      value: 
-      objectReference: {fileID: 4926485228864481367}
     - target: {fileID: 4163286967053223821, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
       propertyPath: m_Name
       value: Player Controller 2D
       objectReference: {fileID: 0}
-    - target: {fileID: 4163286967053223821, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
+    - target: {fileID: 4763402885320500156, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a081f785d315a2b43966f129ce852878, type: 2}
     - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
       propertyPath: endPoint
       value: 
       objectReference: {fileID: 436925111}
-    - target: {fileID: 7876674043541088132, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: playerSettings
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: greenLine
       value: 
-      objectReference: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
-    - target: {fileID: 7876674043541088132, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-      propertyPath: characterSettings_2D
+      objectReference: {fileID: 5873258266323041011, guid: 856a2627a63b5e54480d3f1db8c50f79, type: 3}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: linePrefab
       value: 
-      objectReference: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
+      objectReference: {fileID: 5873258266323041011, guid: 856a2627a63b5e54480d3f1db8c50f79, type: 3}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: orangeLine
+      value: 
+      objectReference: {fileID: 5873258266323041011, guid: c3eca6666b241fe4cafec6bf8deef494, type: 3}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: mainLineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: mainLineColor.r
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: normalizedLineColor.g
+      value: 0.59399676
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172340252567573323, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
+      propertyPath: normalizedLineColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9212857022284601151, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3300,36 +3296,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dd2be143e20214ea54eb03534462b7, type: 3}
---- !u!198 &4926485227633512765 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7028086223726455437, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4926485228507977575 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8821318510491642970, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4926485228864481367 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3666452233132190751, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &4926485229234282896 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5813694169923211840, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &4926485229234282897 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6968002805049688188, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4926485229764793284 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2683649573238848575, guid: c3b46bf3ed169d046b641f6b52c2b727, type: 3}
-  m_PrefabInstance: {fileID: 227343252902082228}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7257114169333209246
 PrefabInstance:
   m_ObjectHideFlags: 0

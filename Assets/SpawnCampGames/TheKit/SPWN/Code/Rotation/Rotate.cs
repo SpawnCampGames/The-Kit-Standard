@@ -7,7 +7,7 @@ namespace SPWN
     {
         [Header("Inputs")]
         public GameObject target;
-        public Axis axis;
+        public Direction axis;
         public bool local;
 
         GameObject targetObj;
@@ -30,23 +30,11 @@ namespace SPWN
         {
             if(local)
             {
-                switch(axis)
-                {
-                    case Axis.X: return targetObj.transform.right;
-                    case Axis.Y: return targetObj.transform.up;
-                    case Axis.Z: return targetObj.transform.forward;
-                    default: return Vector3.zero;
-                }
+                return axis.RealDirection(targetObj.transform); // Using RealDirection for local axis
             }
             else
             {
-                switch(axis)
-                {
-                    case Axis.X: return Vector3.right;
-                    case Axis.Y: return Vector3.up;
-                    case Axis.Z: return Vector3.forward;
-                    default: return Vector3.zero;
-                }
+                return axis.RealDirection(); // Using RealDirection for world axis
             }
         }
 

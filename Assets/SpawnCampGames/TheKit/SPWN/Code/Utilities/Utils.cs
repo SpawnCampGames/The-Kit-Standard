@@ -122,6 +122,7 @@ namespace SPWN
         public static bool IsInRange(this Vector3 a, Vector3 b, float range) => SquaredDistance(a, b) < range * range;
         #endregion
     }
+
     #region Mouse Input
     /// <summary>
     /// Utility class for mouse input handling.
@@ -154,4 +155,5 @@ namespace SPWN
     public enum Axis { X, Y, Z }
 
     #endregion
+
 }

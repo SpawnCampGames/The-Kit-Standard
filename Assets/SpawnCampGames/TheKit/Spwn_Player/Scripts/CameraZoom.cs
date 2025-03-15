@@ -13,6 +13,8 @@ namespace SPWN
         float defaultFOV;
         [SerializeField] float zoomedFOV = 50f;
 
+        // doesn't work with Cinemachine
+
         void Awake()
         {
             cam = GetComponent<Camera>();

@@ -44,8 +44,8 @@ public class FollowMouse : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = !hideCursor;
-        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+      //  Cursor.visible = !hideCursor;
+      //  Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
 
         if (followMode == FollowMode.ModeUI)
         {
@@ -91,12 +91,12 @@ public class FollowMouse : MonoBehaviour
     private void FollowIn3D(Vector3 mouseScreenPosition)
     {
         Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if(Physics.Raycast(ray,out RaycastHit hit))
         {
             Vector3 hitPosition = hit.point + Vector3.forward * raycastOffset;
             transform.position = hitPosition;
 
-            if (useNormal)
+            if(useNormal)
             {
                 transform.up = hit.normal;
             }
@@ -108,9 +108,9 @@ public class FollowMouse : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, distanceFromCamera));
 
         if (plane2D == Plane2D.XY)
-            transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, transform.position.z);  // X-Y plane
+            transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y,mouseWorldPosition.z);  // X-Y plane
         else
-            transform.position = new Vector3(mouseWorldPosition.x, transform.position.y, mouseWorldPosition.z);  // X-Z plane
+            transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, mouseWorldPosition.z);  // X-Z plane
     }
 
     private void FollowInUI(Vector3 mouseScreenPosition)
@@ -155,7 +155,6 @@ public class FollowMouse : MonoBehaviour
 
     private void OnGUI()
     {
-        // Now GUI rendering is inside OnGUI to avoid errors
         Utils.RealtimeDebug($"Screen Position: X{remappedCoords.x:F0}, Y{remappedCoords.y:F0}", new Vector2(10, 10), 24, Color.white, Color.black, 2, 4);
     }
 }

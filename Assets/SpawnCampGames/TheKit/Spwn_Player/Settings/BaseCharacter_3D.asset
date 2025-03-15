@@ -12,32 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e35791edfd63341a66db9158b53e7e, type: 3}
   m_Name: BaseCharacter_3D
   m_EditorClassIdentifier: 
-  walkSpeed: 4.5
+  walkSpeed: 4.75
   runSpeed: 9
-  speedChangeSmoothness: 4
-  crouchSpeed: 2
-  jumpForce: 20
-  dashForce: 15
   airSpeed: 3.5
-  climbSpeed: 4.5
-  slideSlowSpeed: 1.5
-  momentumDampingSpeed: 0.5
-  groundMomentumDampingSpeed: 8
-  groundDashStaminaCost: 33
-  airDashStaminaCost: 66
-  sprintStaminaCost: 30
+  crouchSpeed: 2
+  slideDamp: 1.5
+  airDamp: 0.5
+  groundDamp: 8
+  jumpForce: 20
   jumpMagn: 0.25
-  dashMagn: 0.25
   allowedJumps: 2
   jumpBuffModifier: 1
   airControlStrength: 1.5
   standingVector: {x: 0, y: 0, z: 0}
   crouchingVector: {x: 0, y: 0.5, z: 0}
-  wallRaycastOffset: {x: 0, y: -0.8, z: 0}
-  ceilingChkRaycastOffset: {x: 0, y: 0.5, z: 0}
-  ceilingChkRaycastDist: 0.5
-  wallRaycastDist: 1
+  roofCheckOffset: {x: 0, y: 0.5, z: 0}
+  roofCheckDistance: 0.5
   mass: 1
-  jumpSmoothing: 7
-  dashSmoothing: 7
+  jumpDamp: 7
   gravity: -11.5

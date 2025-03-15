@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 using SPWN;
-using Codice.CM.Client.Gui;
+using Codice.CM.Client.Gui; 
+                            // who told you you could go and insert yourself like that
+                            // who even are you?
 
 [CustomEditor(typeof(Widget))]
 public class WidgetEditor : Editor
@@ -102,7 +104,7 @@ public class WidgetEditor : Editor
         DrawLabelCentered("• Components can safely be removed if unwanted.", EditorStyles.wordWrappedLabel, MaxLogoWidth);
 
         GUILayout.Space(15);
-        DrawLabelCentered("Copyright SpawnCampGames 2024", EditorStyles.miniLabel, CopyrightWidth);
+        DrawLabelCentered("Copyright SpawnCampGames 2025", EditorStyles.miniLabel, CopyrightWidth);
     }
     private void ShowEasterEggPopup()
     {
@@ -191,6 +193,4 @@ public class DeveloperPopupEasterEgg : EditorWindow
         GUILayout.FlexibleSpace(); // Push content to the center vertically
         GUILayout.EndVertical();
     }
-
-
 }

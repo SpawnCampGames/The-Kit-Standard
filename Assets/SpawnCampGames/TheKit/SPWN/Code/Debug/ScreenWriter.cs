@@ -3,7 +3,7 @@ using SPWN;
 
 public class ScreenWriter : MonoBehaviour
 {
-    public string msg = "THE-KIT - v0.0.1 - 2024";
+    public string msg = "THE-KIT - v2025";
     public Color textColor = Color.cyan;
     public int textSize = 24;
 

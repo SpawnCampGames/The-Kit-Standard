@@ -168,13 +168,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.6
+  m_fontSize: 37.65
   m_fontSizeBase: 25.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -380,13 +380,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.3
+  m_fontSize: 35.25
   m_fontSizeBase: 25.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -435,11 +435,12 @@ GameObject:
   - component: {fileID: 6208597819145461925}
   - component: {fileID: 1092513973520594697}
   - component: {fileID: 4295153036724672048}
+  - component: {fileID: 4874168908873532702}
   - component: {fileID: 7285167909538520584}
   m_Layer: 5
   m_Name: FrameCalculator
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 64d5043a247ac02488023359b94bba43, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -515,6 +516,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!225 &4874168908873532702
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751792016519136411}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &7285167909538520584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +872,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -909,7 +922,7 @@ GameObject:
   - component: {fileID: 4041550054806520096}
   - component: {fileID: 4104724847704673013}
   m_Layer: 5
-  m_Name: WIDGETTXT
+  m_Name: INTXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,7 +975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: IN
+  m_text: in
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
@@ -1253,13 +1266,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.35
+  m_fontSize: 36.4
   m_fontSizeBase: 25.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1438,7 +1451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WIDGET
+  m_text: widget
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
@@ -1601,13 +1614,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.3
+  m_fontSize: 35.25
   m_fontSizeBase: 25.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1710,7 +1723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FRAMES
+  m_text: frames
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
@@ -1743,7 +1756,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535

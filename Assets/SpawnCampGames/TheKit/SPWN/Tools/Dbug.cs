@@ -5,14 +5,14 @@ namespace SPWN
     /// <para>Custom <c>Dbug</c> Logs make use of Unity's <c>Debug</c> class.</para>
     /// <para>Enhance your <c>Logs</c> with flexible methods to :</para>
     /// <list type="bullet">
-    /// <item><description>Highlight</description></item>
-    /// <item><description>Organize</description></item>
-    /// <item><description>Emphasize</description></item>
+    /// <item>Highlight</item>
+    /// <item>Organize</item>
+    /// <item>Emphasize</item>
     /// </list>
     /// <para>📗For Documentation, see <a href="https://github.com/SpawnCampGames/TheKit/Documentation/">SPWN DOCS</a>.</para>
     /// </summary>
     /// <remarks>
-    /// Version 8.26
+    /// Version 2025.3.14
     /// </remarks> 
     public static class Dbug
     {
@@ -50,24 +50,24 @@ namespace SPWN
 
         public static void MyLog(string msg, string color = "#FFFFFF", bool bold = false, bool italic = false, bool underline = false, bool strikethrough = false) => CustomLog(msg, color, bold, italic, underline, strikethrough);
 
-#region Default Loggers
+        #region Default Loggers
 
         public static void Log(string msg) => CustomLog(msg, "#FFFFFF");
         public static void Error(string msg) => CustomLog($"💀 {msg}", "#FF0000");
         public static void Warning(string msg) => CustomLog($"⚠️ {msg}", "#FFFF00");
 
-#endregion
-#region Colored Loggers
-
-        public static void Red(string msg) => CustomLog(msg, "#FF0000");
-        public static void Orange(string msg) => CustomLog(msg, "#FFA500");
-        public static void Yellow(string msg) => CustomLog(msg, "#FFFF00");
-        public static void Green(string msg) => CustomLog(msg, "#00FF00");
-        public static void Blue(string msg) => CustomLog(msg, "#00FFFF");
-        public static void Indigo(string msg) => CustomLog(msg, "#4B0082");
-        public static void Violet(string msg) => CustomLog(msg, "#A349A4"); // OG being #800080
-
         #endregion
+        #region Colored Loggers
+
+                public static void Red(string msg) => CustomLog(msg, "#FF0000");
+                public static void Orange(string msg) => CustomLog(msg, "#FFA500");
+                public static void Yellow(string msg) => CustomLog(msg, "#FFFF00");
+                public static void Green(string msg) => CustomLog(msg, "#00FF00");
+                public static void Blue(string msg) => CustomLog(msg, "#00FFFF");
+                public static void Indigo(string msg) => CustomLog(msg, "#4B0082");
+                public static void Violet(string msg) => CustomLog(msg, "#A349A4"); // OG being #800080
+
+                #endregion
         #region Styled Loggers
 
         public static void Bold(string msg) => CustomLog(msg, "#FFFFFF", bold: true);
@@ -97,6 +97,8 @@ namespace SPWN
         // Actions
         public static void Do(string msg) => CustomLog($"➤ {msg}", "#00fff7");
         public static void Skip(string msg) => CustomLog($"↻ {msg}", "#ffee00");
+
+        public static void Input(string msg) => CustomLog($"🎮 {msg}","#ffde85");
 
         // Results
         public static void Hit(string msg) => CustomLog($"💥 {msg}", "#fcd53f");

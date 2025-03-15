@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[SelectionBase]//Diverts the selection to this object
+[SelectionBase]
 public class Springy : MonoBehaviour
 {
     public Transform springTarget;

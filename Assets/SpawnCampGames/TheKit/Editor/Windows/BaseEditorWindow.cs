@@ -29,7 +29,7 @@ public class BaseEditorWindow : EditorWindow
         }
     }
 
-    protected virtual string CopyrightText => "Copyright SpawnCampGames 2024";
+    protected virtual string CopyrightText => "Copyright SpawnCampGames 2025";
     protected virtual void DrawFooterText(string footerText = default)
     {
         GUILayout.Space(10);

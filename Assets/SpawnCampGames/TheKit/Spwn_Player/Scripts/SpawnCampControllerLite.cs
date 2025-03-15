@@ -105,13 +105,13 @@ public class SpawnCampControllerLite : MonoBehaviour
             (airVector * playerSettings.airSpeed) +
             (Vector3.up * gravitySim);
 
-        if (jump.magnitude > playerSettings.jumpMagn)
+        if(jump.magnitude > playerSettings.jumpMagn)
         {
             finalVector += jump;
         }
 
         characterController.Move(finalVector * Time.deltaTime);
-        jump = Vector3.Lerp(jump, Vector3.zero, playerSettings.jumpDamp * Time.deltaTime);
+        jump = Vector3.Lerp(jump,Vector3.zero,playerSettings.jumpDamp * Time.deltaTime);
     }
 
     private void ProcessPlayerInput()

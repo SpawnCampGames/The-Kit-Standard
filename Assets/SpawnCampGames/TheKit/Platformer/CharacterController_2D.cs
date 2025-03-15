@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 public class CharacterController_2D : MonoBehaviour
 {
+    public SpringJoint2D springJoint;
+
     [SerializeField] CharacterSettings2D characterSettings_2D;
 
     Rigidbody2D rb;
@@ -55,13 +57,13 @@ public class CharacterController_2D : MonoBehaviour
         {
             JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
             JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
-            Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+            Move = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"))
         };
 
-        if (characterSettings_2D.SnapInput)
+        if(characterSettings_2D.SnapInput)
             SnapInput();
 
-        if (input.JumpDown)
+        if(input.JumpDown)
         {
             jumpRequested = true;
             timeJumpPressed = time;
