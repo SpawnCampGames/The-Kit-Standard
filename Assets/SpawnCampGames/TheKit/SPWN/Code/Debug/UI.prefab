@@ -67,9 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'ZOOM : 00%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39adf1425c495a04d9d2d1915fc177cd, type: 2}
-  m_sharedMaterial: {fileID: 8213230415595145288, guid: 39adf1425c495a04d9d2d1915fc177cd,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
+  m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -149,7 +148,7 @@ GameObject:
   - component: {fileID: 7437121804102405312}
   - component: {fileID: 5466696252314919616}
   - component: {fileID: 6807986956118422291}
-  - component: {fileID: 6759560724516394865}
+  - component: {fileID: 378989358362224937}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -242,7 +241,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6759560724516394865
+--- !u!114 &378989358362224937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,7 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7858097264485590560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49ae035e39ef479419ded1a600ab4aff, type: 3}
+  m_Script: {fileID: 11500000, guid: 622c630c2c0f2a0479afa95595c99e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   zoomPercentage: {fileID: 6042105994374820371}
@@ -324,9 +323,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WORLD : (000, 000, 000)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39adf1425c495a04d9d2d1915fc177cd, type: 2}
-  m_sharedMaterial: {fileID: 8213230415595145288, guid: 39adf1425c495a04d9d2d1915fc177cd,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
+  m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -461,9 +459,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'RMAP : (00X, 00Y)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39adf1425c495a04d9d2d1915fc177cd, type: 2}
-  m_sharedMaterial: {fileID: 8213230415595145288, guid: 39adf1425c495a04d9d2d1915fc177cd,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b05db3e20b183df458f966d62e2de661, type: 2}
+  m_sharedMaterial: {fileID: 4444467182604646826, guid: b05db3e20b183df458f966d62e2de661, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

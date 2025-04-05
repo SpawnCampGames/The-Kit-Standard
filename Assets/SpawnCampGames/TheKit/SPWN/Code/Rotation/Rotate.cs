@@ -44,15 +44,5 @@ namespace SPWN
             Quaternion rotation = Quaternion.AngleAxis(rotationSpeed * Time.deltaTime,rotationAxis);
             targetObj.transform.rotation = rotation * targetObj.transform.rotation;
         }
-
-        private void OnDrawGizmos()
-        {
-            if(targetObj != null)
-            {
-                Vector3 rotationAxis = GetRotationAxis();
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawLine(targetObj.transform.position,targetObj.transform.position + rotationAxis * 2);
-            }
-        }
     }
 }

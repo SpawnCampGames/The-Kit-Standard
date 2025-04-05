@@ -10,9 +10,6 @@ using Debug = UnityEngine.Debug;
 public class SpawnCampControllerLite : MonoBehaviour
 {
 
-    [Header("Test Variables")]
-    public bool useTransformDirection = true;
-
     #region Variables
     [Header("Player Dynamic Floats")]
     [Tooltip("The gravity simulation applied to the player.")]
@@ -75,6 +72,10 @@ public class SpawnCampControllerLite : MonoBehaviour
 
     void Update()
     {
+        // i used to have logic in here to lock and hide the cursor
+        // i've since moved it out of this script 
+        // so i'll let my MasterMouse script handle that instead..
+
         wasGrounded = characterController.isGrounded;
 
         ProcessPlayerInput();
@@ -128,10 +129,7 @@ public class SpawnCampControllerLite : MonoBehaviour
                 groundVector = new Vector3(horizontalInput, 0, verticalInput);
                 groundVector.Normalize();
 
-                if(useTransformDirection)
-                {
-                    groundVector = transform.TransformDirection(groundVector);
-                }
+                groundVector = transform.TransformDirection(groundVector);
             }
             else
             {

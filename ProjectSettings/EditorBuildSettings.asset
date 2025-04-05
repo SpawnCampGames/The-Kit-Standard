@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/SpawnCampGames/TheKit/Sandbox3D/Scenes_3D/Blank3D.unity
     guid: c6afad84bf9d9e144a1e7b8b16904b52
   - enabled: 1
-    path: Assets/SpawnCampGames/TheKit/Spwn_GodCam/GodCamera.unity
+    path: Assets/SpawnCampGames/TheKit/Spwn_SkyCam/SkyCam.unity
     guid: a7212f3160a48c349a57fd7ca1757f5b
   - enabled: 1
     path: Assets/SpawnCampGames/TheKit/Sandbox2D/Scenes_2D/Sandbox2D.unity

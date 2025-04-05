@@ -4,8 +4,11 @@ using SPWN;
 public class MasterMouse : Singleton<MasterMouse>
 {
     [Header("INITIALIZATION")]
+    [Tooltip("Dont change after game started")]
     [SerializeField] bool locked;
+    [Tooltip("Dont change after game started")]
     [SerializeField] bool confined;
+    [Tooltip("Dont change after game started")]
     [SerializeField] bool hidden;
 
     [Header("Key Bindings")]
@@ -16,26 +19,27 @@ public class MasterMouse : Singleton<MasterMouse>
     public KeyCode ConfineCursorKey = KeyCode.Keypad3;
     public KeyCode UnconfineCursorKey = KeyCode.Keypad6;
 
-    private void Awake()
+    //dont use Awake() or you'll break Instancing
+    protected override void DoAwake()
     {
-        Dbug.Log("MasterMouse Initialized");
-        Cursor.visible = !hidden;
         Initialization();
+        Dbug.Log("MasterMouse Initialized");
     }
 
     private void Initialization()
     {
-        if(locked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else if(confined)
+        if(confined)
         {
             Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
+        }
+
+        if(locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         Cursor.visible = !hidden;
@@ -56,13 +60,21 @@ public class MasterMouse : Singleton<MasterMouse>
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Dbug.Log("Cursor Locked");
+        Dbug.Log($"Cursor Locked: {Cursor.lockState}");
     }
 
     public void UnlockCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Dbug.Log("Cursor Unlocked");
+        if(confined)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        Dbug.Log($"Cursor Unlocked: {Cursor.lockState}");
     }
 
     public void ConfineCursor()
@@ -74,6 +86,16 @@ public class MasterMouse : Singleton<MasterMouse>
     public void UnconfineCursor()
     {
         Cursor.lockState = CursorLockMode.None;
+
+        if(locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         Dbug.Log("Cursor Unconfined");
     }
 

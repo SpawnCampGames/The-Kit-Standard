@@ -6,7 +6,6 @@ using System.Collections;
 /// <summary>
 /// Diagnostics and Demonstration for <c>SPWN.Dbug</c>, Custom Debugging Class.
 /// <para>Add to any GameObject in your scene.</para>
-/// <para><c>OnEnable()</c> will automatically begin <c>Dbug</c> Burn-in Diagnostics.</para>
 /// <para>* View the console for output.</para>
 /// <See cref="Dbug"/>
 /// <para>For documentation, see <a href="https://github.com/SpawnCampGames/TheKit/Documentation/">SPWN DOCS</a>.</para>

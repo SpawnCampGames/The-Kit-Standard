@@ -129,12 +129,18 @@ namespace SPWN
     /// </summary>
     public static class Mouse
     {
-        public static bool Button(int button, bool held = false) =>
-            held ? UnityEngine.Input.GetMouseButton(button) : UnityEngine.Input.GetMouseButtonDown(button);
+        public static bool Button(int button,bool held = false) =>
+            held ? Input.GetMouseButton(button) : Input.GetMouseButtonDown(button);
 
-        public static bool Left(bool held = false) => Button(0, held);
-        public static bool Right(bool held = false) => Button(1, held);
-        public static bool Middle(bool held = false) => Button(2, held);
+        public static bool Left(bool held = false) => Button(0,held);
+        public static bool Right(bool held = false) => Button(1,held);
+        public static bool Middle(bool held = false) => Button(2,held);
+
+        public static bool TryGetWorldRaycast(Camera cam,out RaycastHit hit)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            return Physics.Raycast(ray,out hit);
+        }
     }
     #endregion
 

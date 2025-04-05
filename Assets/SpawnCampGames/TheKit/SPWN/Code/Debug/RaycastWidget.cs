@@ -20,7 +20,7 @@ namespace SPWN
         public GameObject target;
         public Direction direction;
         public Vector3 customDirection;
-        public bool local;
+        public bool local = true;
         Vector3 targetDir;
         GameObject targetObj;
 
@@ -41,10 +41,9 @@ namespace SPWN
 
         private void Awake()
         {
-            if(target != null)
-                targetObj = target;
-            else
-                targetObj = this.gameObject;
+            // targetObj = target ?? gameObject;
+
+            targetObj = target != null ? target : gameObject;
         }
 
         void CalculateDirections()

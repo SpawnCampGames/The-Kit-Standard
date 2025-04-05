@@ -13,7 +13,7 @@ public class GameRaycast3D : MonoBehaviour
     bool draw;
 
     IInteractable cachedInteractable;
-    Transform cachedTransform;
+    public Transform cachedTransform;
     Vector3 cachedHitPoint;
 
     private void Start()
@@ -59,7 +59,23 @@ public class GameRaycast3D : MonoBehaviour
 
         Gizmos.color = cachedInteractable != null ? Color.cyan : Color.yellow;
         Gizmos.DrawRay(ray.origin,ray.direction * distance);
+
+        if(cachedTransform != null)
+        {
+            Vector3 size = Vector3.one;
+
+            if(cachedTransform.TryGetComponent(out Collider col))
+                size = col.bounds.size;
+            else
+                size = cachedTransform.lossyScale;
+
+            float margin = 0.25f;
+            size += Vector3.one * margin;
+
+            Gizmos.DrawWireCube(cachedTransform.position,size);
+        }
     }
+
 
     void ClearCache()
     {
