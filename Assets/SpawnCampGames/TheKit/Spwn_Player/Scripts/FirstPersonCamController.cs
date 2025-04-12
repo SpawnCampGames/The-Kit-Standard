@@ -15,7 +15,7 @@ namespace SPWN
 
         private void OnEnable()
         {
-            Debug.Log("FirstPersonCamController [Player] Enabled");
+            Debug.Log("FirstPersonCamController Enabled");
             currentLookingPos.x = controller.transform.eulerAngles.y;
         }
 
